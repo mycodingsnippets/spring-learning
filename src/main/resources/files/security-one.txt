@@ -1,0 +1,21 @@
+WebSecurityConfig extends WebSecurityConfigurerAdapter
+UserDetailsServiceImpl implements UserDetailsService
+UserDetailsImpl implements UserDetails
+AuthEntryPointJwt implements AuthenticationEntryPoint
+AuthTokenFilter extends OncePerRequestFilter
+JwtUtils provides methods for generating, parsing, validating JWT
+
+AuthController: @PostMapping("/signin") , @PostMapping("/signup")
+TestController: @GetMapping("/api/test/all"), @GetMapping("/api/test/[role]")
+
+UserRepository extends JpaRepository<User, Long>
+RoleRepository extends JpaRepository<Role, Long>
+
+User: id, username, email, password, roles
+Role: id, name
+
+LoginRequest: {username, password}
+SignupRequest: {username, email, password}
+
+JwtResponse: {token, type, id, username, email, roles}
+MessageResponse: {message}
